@@ -2324,7 +2324,9 @@ namespace BTCPayServer.Tests
                     {
                         ("{ invalidjson file here}",
                             new Dictionary<string, object>() {{String.Empty, "{ invalidjson file here}"}})
-                    }
+                    },
+                    // Duplicate keys should not crash things
+                    {("{ \"key\": true, \"key\": true}", new Dictionary<string, object>() {{"key", "True"}})}
                 };
 
             testCases.ForEach(tuple =>
